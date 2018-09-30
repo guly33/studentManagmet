@@ -1,0 +1,363 @@
+/* COLOR SCHEME */
+/* HSL */
+/*
+light-blue: 3788cc;
+blue: 0b4f6c;
+green-blue: 3aafb9;
+white:fbfbff;
+black:#040f16;
+ddd8c4
+ */
+
+/* ---------------- */
+/* -----BASIC------ */
+/* ---------------- */
+
+html,
+body{
+	padding: 0;
+	margin: 0;
+	background-color: #fbfbff;
+	color: #040f16;
+}
+
+.mainContainer {
+	padding: 0;
+}
+
+.show {
+	visibility: visible;
+}
+
+.hide {
+	visibility: hidden;
+}
+/* ---------------- */
+/* -----HEADER----- */
+/* ---------------- */
+
+.mainNav {
+	background-color: #fbfbff;
+	color: #0b4f6c;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border-bottom: 4px solid #0b4f6c;
+	margin-bottom: 15px;
+
+	a {
+	background-color: transparent;
+	color: #3aafb9;
+	border: none;
+	border-left: 2px solid #3aafb9;
+	border-bottom: 5px solid #3aafb9;
+	}
+
+	a:hover {
+	background-color: #3aafb9;
+	color: #fbfbff;
+	}
+
+
+	a:active {
+	background-color: #3aafb9;
+	}
+
+	.rightContainer,
+	.leftContainer {
+	width: 20%;
+	display: inline-block;
+	margin: 0;
+	}
+
+	.centerContainer {
+	width: 60%;
+	display: inline-block;
+	margin: 0;
+	}
+
+	.nav {
+		li {
+			margin: 0 auto;
+	    	width: 50%;
+	    	padding: 0 10px;
+
+	    	a {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	/* logo */
+	.logoContainer {
+	    padding: 7px 20px;
+	
+		img {
+			vertical-align: middle;
+    		border: 1px solid #636363;
+    		border-radius: 5px;
+		}
+	}
+
+	.userInfoContainer {
+		ul {			
+			padding: 24px 0 0 0;
+		}
+	
+		.imageLi {
+			width: 21%;
+    		margin-left: 12px;
+		}
+
+		img {
+			width: 75%;
+			margin: 0 auto;
+			border-radius: 100px;
+		}
+
+		#userRole {
+			color: #150578;
+		}
+
+		.textInfo {
+			width: 60%;
+			text-align: right;
+		    margin: 0;
+		    padding-top: 10px;
+		}
+
+	}
+
+}
+
+
+
+
+/* ---------------- */
+/* -----SCHOOL----- */
+/* ---------------- */
+
+.schoolRow {
+	margin-left: 0;
+}
+
+.schoolNavs {
+	width: 100%;
+    height: 100%;
+    color: #3788cc;
+
+    .row .col-6 {
+		padding: 0;
+	}
+
+	.schoolNavHead {
+		background-color: #fbfbff;
+	
+		h4 {
+			background-color: #3788cc;
+		    width: 50%;
+		    color: #fbfbff;
+		    text-align: right;
+		    border: 1px solid #3788cc;
+		    border-top-left-radius: 15px;
+		    border-top-right-radius: 15px;
+		    padding-right: 23px;
+			max-width: 80%;
+			margin: 0;
+		}
+
+	}
+
+
+	.coursesNavContainer,
+	.studentsNavContainer {
+	    height: 100%;
+	    width: 100%;
+	}
+
+
+	.coursesNavContainer {
+	background-color: #3788cc;
+    color: #fbfbff;
+	}
+	.studentsNavContainer {
+		background-color: #fbfbff;
+		border-top-left-radius: 50px;
+		border-bottom-left-radius: 50px;
+		border: 1px solid #3788cc;
+	}
+		
+	.coursesNav,
+	.studentsNav {
+		width: 90%;
+	    margin: 0 auto;
+	    padding-top: 15px;
+	
+	    .courseBtn {
+		    color: #fbfbff;
+			background-color: #3788cc;
+			border: none;
+			border-top: 1px solid #fbfbff;
+			border-left: 1px solid #fbfbff;
+			border-bottom: 1px solid #fbfbff;
+			margin-bottom: 10px;
+		}
+
+		.courseBtn.active {
+			color: #3788cc;
+    		background-color: #fbfbff;
+		}
+
+		.studentBtn {
+			color: #3788cc;
+			border: none;
+			border-top: 1px solid #3788cc;
+			border-left: 1px solid #3788cc;
+			border-bottom: 1px solid #3788cc;
+			margin-bottom: 10px;
+			background-color: transparent;
+			text-align: right;
+
+		}
+
+		.addBtn {
+			/* color: #36e3ff; */
+		    font-weight: bolder;
+		    font-size: 20px;
+		    letter-spacing: 0.8px;
+		    margin-bottom: 16px;
+		    border: none;
+		    color: #150578;
+		    background-color: transparent;
+		
+		    i {
+				float: right;
+			    padding-top: 7px;
+			}
+		}
+
+
+	}
+
+}
+
+.controlDiv {
+	width: 80%;
+	min-height: 310px;
+	margin: 2% 6%;
+	text-align: right;
+	border: 3px solid #3aafb9;
+	border-radius: 20px;
+	padding: 30px;
+	position: absolute;
+
+	.form-group {
+		width: 50%;
+	}
+
+	.imageUpload {
+		float: left;
+		width: 40%;
+	}
+
+	.formImage {
+		margin: 0 16% 0 0;
+		border: 1px solid #0b4f6c;
+		border-radius: 100px;
+		width: 100px;
+		height: 100px;
+	}
+
+}
+
+.checkCourseContainer {
+	display: inline-block;
+}
+
+.inputFile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+div.fileinputs {
+	position: relative;
+}
+
+div.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	margin-left: 90%;
+	font-size: 30px;
+	color: #0b4f6c;
+}
+
+input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	// filter: alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
+
+textarea#styled {
+	width: 100%;
+	height: 120px;
+	color: #040f16;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	background-color: transparent;
+}
+
+.submitContainer {
+	width: 100%;
+    padding: 28px;
+}
+.submitBtn {
+	float: left;
+}
+
+.basicInfo {
+	width: 40%;
+	float: right;
+	padding-right: 17px;
+}
+
+.courseLearned {
+	width: 30%;
+	float: right;
+}
+
+#studentImg {	
+    width: 90%;
+    border-radius: 100px;
+    float: right;
+}
+/* ---------------- */
+/* -----FOOTER----- */
+/* ---------------- */
+
+footer {
+	background-color: #272727;
+	color: #fff;
+
+	p {
+		display: inline-block;
+		padding-top: 20px;
+		padding-left: 10px;
+	}
+
+	.contactInfo {
+		float: right;
+		padding-right: 10px;
+	}
+}
+
+
+
+ 
