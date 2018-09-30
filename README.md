@@ -1,0 +1,2 @@
+# studentManagmet
+php school project
