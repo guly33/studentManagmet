@@ -39,7 +39,7 @@
 			}
 		}
 
-		header("Location: ../../index.php?main=school");
+		// header("Location: ../../index.php?main=school");
 		// header("Location: ../../".$_SESSION['page']);
 	}
  ?>

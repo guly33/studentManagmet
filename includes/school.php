@@ -1,5 +1,7 @@
 <?php include 'handlers/schoolDBhandler.php'; ?>
 <script>
+var mode = 'school';
+
 courseArr = <?php echo $myJSON; ?>;
 console.log(courseArr);
 </script>
@@ -9,28 +11,42 @@ console.log(courseArr);
 			<div class="schoolNavs">
 				<div class="row">
 					<div class="col-6">
-						<div class="schoolNavHead">
+						<div class="schoolNavHead navHead">
 							<h4>קורסים</h4>
 						</div>
-						<div class="coursesNavContainer">
+						<div class="coursesNavContainer NavContainer">
 							<nav class="nav flex-column coursesNav" id="courses">
 								<button class="btn addBtn" id="addCourseBtn"><i class="fas fa-plus"></i>הוסף קורס</button>
 								<div class="alert alert-success courseAlerts" id="removeCourseSucsses" role="alert">
 									נמחק בהצלחה!
+								</div>
+								<div class="modal deleteModals " tabindex="-1" role="dialog" id="removeStudentConfirm">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">הסר תלמיד מקורס</h5>
+											</div>
+											<div class="modal-body">
+												<p>במידה והתלמיד לא רשום לקורסים נוספים, הוא ימחק ממאגר הנתונים</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger modalBtn" id="confirmRemoveStudent" data-dismiss="modal">הסר</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="modal deleteModals" tabindex="-1" role="dialog" id="removeCourseConfirm">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
 												<h5 class="modal-title">מחק קורס</h5>
-												<span aria-hidden="true">&times;</span>
-												</button>
 											</div>
 											<div class="modal-body">
 												<p>במידה ויש תלמידים רשומים לקורס הקורס לא ימחק</p>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" id="confirmRemoveCourse" data-dismiss="modal">מחק</button>
+												<button type="button" class="btn btn-danger modalBtn" id="confirmRemoveCourse" data-dismiss="modal">מחק</button>
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
 											</div>
 										</div>
@@ -41,14 +57,12 @@ console.log(courseArr);
 										<div class="modal-content">
 											<div class="modal-header">
 												<h5 class="modal-title">מחק תלמיד</h5>
-												<span aria-hidden="true">&times;</span>
-												</button>
 											</div>
 											<div class="modal-body">
 												<p>התלמיד יוסר מכל הקורסים אליהם הוא רשום וימחק מהמאגר, האם להמשיך?</p>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" id="confirmDeleteStudent" data-dismiss="modal">מחק</button>
+												<button type="button" class="btn btn-danger modalBtn" id="confirmDeleteStudent" data-dismiss="modal">מחק</button>
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
 											</div>
 										</div>
@@ -69,24 +83,6 @@ console.log(courseArr);
 								</div>
 								<div class="alert alert-danger studentAlerts" id="deleteStudentSucsses" role="alert">
 									נחמק ממאגר הנתונים!
-								</div>
-								<div class="modal deleteModals" tabindex="-1" role="dialog" id="removeStudentConfirm">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title">הסר תלמיד מקורס</h5>
-												<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<p>במידה והתלמיד לא רשום לקורסים נוספים, הוא ימחק ממאגר הנתונים</p>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" id="confirmRemoveStudent" data-dismiss="modal">מחק</button>
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
-											</div>
-										</div>
-									</div>
 								</div>
 							</nav>
 						</div>

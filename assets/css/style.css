@@ -125,13 +125,19 @@ body{
     padding-top: 10px;
 }
 
-/* ---------------- */
-/* -----SCHOOL----- */
-/* ---------------- */
+/* ------------------------ */
+/* -----SCHOOL n ADMIN----- */
+/* ------------------------ */
 
-.schoolRow {
+.schoolRow,
+.adminRow {
 	margin-left: 0;
 }
+
+.NavHead {
+	background-color: #fbfbff;
+}
+
 
 .schoolNavs {
 	width: 100%;
@@ -144,11 +150,9 @@ body{
 	padding: 0;
 }
 
-.schoolNavHead {
-	background-color: #fbfbff;
-}
 
-.schoolNavHead h4 {
+.schoolNavHead h4,
+.navHead h4 {
 	background-color: #3788cc;
     width: 70%;
     color: #fbfbff;
@@ -162,7 +166,8 @@ body{
 }
 
 .coursesNavContainer,
-.studentsNavContainer {
+.studentsNavContainer,
+.NavContainer {
     height: 100%;
     width: 100%;
 }
@@ -171,11 +176,14 @@ body{
 	background-color: #3788cc;
     color: #fbfbff;
 }
-.studentsNavContainer {
+.studentsNavContainer,
+.adminNavContainer {
 	background-color: #fbfbff;
 	border-top-left-radius: 50px;
 	border-bottom-left-radius: 50px;
 	border: 1px solid #3788cc;
+}
+.studentsNavContainer {
 }
 
 .coursesNav,
@@ -377,6 +385,9 @@ textarea.styled {
     color: #3788cc;
 }
 
+.modalBtn {
+	margin-left: 32px;
+}
 /* ---------------- */
 /* -----FOOTER----- */
 /* ---------------- */
