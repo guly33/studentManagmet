@@ -364,6 +364,11 @@ textarea.styled {
 	width: 100%;
 }
 
+.deleteStudentBtn {
+
+	left: 65px;
+	bottom: 10px;
+}
 /*------------------*/
 /*---ALERTS N MODALS*/
 /*------------------*/

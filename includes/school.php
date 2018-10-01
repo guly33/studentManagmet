@@ -36,6 +36,24 @@ console.log(courseArr);
 										</div>
 									</div>
 								</div>
+								<div class="modal deleteModals" tabindex="-1" role="dialog" id="deleteStudentConfirm">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">מחק תלמיד</h5>
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<p>התלמיד יוסר מכל הקורסים אליהם הוא רשום וימחק מהמאגר, האם להמשיך?</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" id="confirmDeleteStudent" data-dismiss="modal">מחק</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</nav>
 						</div>
 					</div>
@@ -79,7 +97,7 @@ console.log(courseArr);
 		<div class="col-8">
 			<div class="controlDivContainer">
 				<div class="addStudent controlDiv" >
-					<form action="includes/handlers/addStudentHandler.php" method="post" enctype="multipart/form-data" onsubmit="return checkCourses()">
+					<form action="includes/handlers/addStudentHandler.php" method="post" enctype="multipart/form-data" onsubmit="return studentValid(this)">
 						<div class="form-group imageUpload">
 							<label for="imageToUpload">תמונת פרופיל:</label>
 							<div class="fileinputs">
@@ -153,12 +171,12 @@ console.log(courseArr);
 							<div class="editStudent">
 								<button class="btn btn-primary editBtn">edit</button>
 								<div id="editFormContainer">
-									<form method="post" action="includes/handlers/editStudent.php" enctype="multipart/form-data">
+									<form method="post" action="includes/handlers/editStudent.php" enctype="multipart/form-data" onsubmit="return studentEditValid(this)">
 										<div class="row">
 											<div class="col-6">
 												<div class="form-group">
 													<label for="newName">שנה שם:</label>
-													<input type="text" class="form-control" id="newName" name="newName" placeholder="הכנס שם תלמיד.">
+													<input type="text" class="form-control" id="newName" name="newName" placeholder="הכנס שם תלמיד." required>
 												</div>
 											</div>
 											<div class="col-6">
@@ -178,14 +196,14 @@ console.log(courseArr);
 											<div class="col-6">
 												<div class="form-group">
 													<label for="newEmail">שנה אימייל:</label>
-													<input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="הכנס דואר אלקטרוני" aria-describedby="emailHelp" >
+													<input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="הכנס דואר אלקטרוני" aria-describedby="emailHelp" required>
 													<small id="emailHelp" class="form-text text-muted">הדוא"ל ישמש גם כשם משתמש לכניסה למערכת</small>
 												</div>
 											</div>
 											<div class="col-6">
 												<div class="form-group">
 													<label for="newPhone">שנה טלפון:</label>
-													<input type="tel" class="form-control" id="newPhone" name="newPhone">
+													<input type="tel" class="form-control" id="newPhone" name="newPhone" required>
 												</div>
 											</div>
 										</div>
@@ -198,9 +216,11 @@ console.log(courseArr);
 											<div class="col-4">
 												<input type="hidden" id="studentId" name="studentId">
 												<button type="submit" class="btn btn-primary submitBtn" name="submit" value="updateStudent">עדכן</button>
+
 											</div>
 										</div>
 									</form>
+									<button class="btn btn-danger deleteStudentBtn deleteBtn" data-toggle="modal" data-target="#deleteStudentConfirm">מחק</button>
 								</div>
 							</div>
 						</div>
