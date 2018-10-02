@@ -7,6 +7,7 @@
 	}
 
 	$rolesArr = array("owner", "manager", "salesman");
+	$roleJson = json_encode($rolesArr);
 	$userName = "";
 	$userRole = "";
 	$userImg = "assets/images/avatars/admin-avatar.png";

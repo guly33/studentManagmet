@@ -3,6 +3,7 @@
 		# code...
 		$userEmail = $_POST['userEmail'];
 		$password = $_POST['userPassword'];
+		$password = md5($password);
 
 		$result = $account->login($userEmail, $password);
 

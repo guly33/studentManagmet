@@ -2,7 +2,15 @@
 	function uploadImg($img, $submit)
 	{
 		# code...
-		$target_dir = ($submit == 'addStudent') ? "../../assets/images/studentImg/" : "../../assets/images/courseImg/";		
+		if ($submit == 'addStudent' || $submit == 'updateStudent') {
+			# code...
+			$target_dir = "../../assets/images/studentImg/";
+		} elseif ($submit == "addCourse" || $submit == 'editCourse') {
+			# code...
+			$target_dir = "../../assets/images/courseImg/";
+		} else {
+			$target_dir = "../../assets/images/avatars/";
+		}
 		// $target_dir = "../../assets/images/courseImg/";
 		$target_file = $target_dir . basename($img["name"]);
 		$uploadOk = 1;
@@ -27,6 +35,7 @@
 		if ($img["size"] > 500000) {
 		   echo "Sorry, your file is too large.";
 		   $uploadOk = 0;
+
 		}
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -46,7 +55,16 @@
 		   }
 		}
 
-		$filePath = ($submit == 'addStudent') ? "assets/images/studentImg/".$img['name'] : "assets/images/courseImg/".$img['name'];
+		if ($submit == 'addStudent' || $submit == 'updateStudent') {
+			# code...
+			$filePath = "assets/images/studentImg/".$img['name'];
+		} elseif ($submit == "addCourse" || $submit == 'editCourse') {
+			# code...
+			$filePath = "assets/images/courseImg/".$img['name'];
+		} else {
+			$filePath = "assets/images/avatars/".$img['name'];
+		}
 		return $filePath;
+	
 	}
  ?>

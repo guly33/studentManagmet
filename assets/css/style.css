@@ -16,7 +16,7 @@ ddd8c4
 html,
 body{
 	padding: 0;
-	margin: 0 0 80px 0;
+	margin: 0 0 190px 0;
 	background-color: #fbfbff;
 	color: #040f16;
 }
@@ -128,7 +128,25 @@ body{
 /* ------------------------ */
 /* -----SCHOOL n ADMIN----- */
 /* ------------------------ */
+.userBtn {
+	width: 80%;
+}
+.userName {
+	float: right;
+}
+.userRole {
+	float: left;
+}
+#addUserBtn {
+	width: 65%;
+    margin: 5px;
+}
 
+#editUserFormContainer .imageUpload {
+	float: right;
+	width: 100%;
+	height: 200px;
+}
 .schoolRow,
 .adminRow {
 	margin-left: 0;
@@ -183,8 +201,6 @@ body{
 	border-bottom-left-radius: 50px;
 	border: 1px solid #3788cc;
 }
-.studentsNavContainer {
-}
 
 .coursesNav,
 .studentsNav {
@@ -204,17 +220,19 @@ body{
 
 }
 
-.coursesNav .courseBtn:hover{
+.coursesNav .courseBtn:hover {
 	color: #3788cc;
 	background-color: #fbfbff;
 }
+
 
 .coursesNav .courseBtn.active {
 	color: #3788cc;
     background-color: #fbfbff;
 }
 
-.studentsNav .studentBtn {
+.studentsNav .studentBtn,
+.userBtn {
 	color: #3788cc;
 	border: none;
 	border-top: 1px solid #3788cc;
@@ -224,7 +242,11 @@ body{
 	background-color: transparent;
 	float: right;
 }
+.userBtn:hover {
+	color: #fbfbff;
+	background-color: #3788cc;
 
+}
 .addBtn {
 	/* color: #36e3ff; */
     font-weight: bolder;
@@ -359,7 +381,8 @@ textarea.styled {
 }
 
 #studentImg,
-#courseImg {	
+#courseImg,
+#userImg {	
     width: 90%;
     border-radius: 100px;
     float: right;

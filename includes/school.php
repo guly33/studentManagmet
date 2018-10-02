@@ -211,7 +211,7 @@ console.log(courseArr);
 											</div>
 											<div class="col-4">
 												<input type="hidden" id="studentId" name="studentId">
-												<button type="submit" class="btn btn-primary submitBtn" name="submit" value="updateStudent">עדכן</button>
+												<button type="submit"  class="btn btn-primary submitBtn" name="submit" value="updateStudent">עדכן</button>
 
 											</div>
 										</div>

@@ -1,5 +1,125 @@
 if (mode == 'admin') {
-    
+    var roleSelect = document.getElementsByClassName("roleSelect"),
+        adminNav = document.querySelector("#users"),
+        addUserBtn = document.querySelector("#addUserBtn");
+
+    for(var k = 0; k < roleSelect.length; k++){
+
+        for (var i = 0; i < roleArr.length; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", i);
+            option.textContent = roleArr[i];
+            roleSelect[k].add(option);
+        }
+
+    }
+ 
+    adminInit();
+    function adminInit() {
+        for (var i = 0; i < usersArr.length; i++) {
+            $(".controlDiv").addClass("hide");
+            
+            var button = document.createElement("button");
+            var role = document.createElement("span");
+            var name = document.createElement("span");
+            roleArr.forEach( function(el, k) {
+                // statements
+                if (k == usersArr[i].role) {
+                    role.textContent = el;
+                }
+            });
+
+            name.classList.add("userName");
+            role.classList.add("userRole");
+            button.id = "u-" + usersArr[i].id;
+            button.classList.add("btn");
+            button.classList.add("userBtn");
+            name.textContent = usersArr[i].name;
+            button.appendChild(name);
+            button.appendChild(role);
+            adminNav.appendChild(button);
+            
+
+        }
+        adminAddEvents()
+    }
+
+    function adminAddEvents() {
+
+        $("#editUserFormContainer").hide();
+
+        $("#addUserBtn").on("click", function () {
+            /* body... */
+            $(".controlDiv").addClass("hide");
+            $(".addUser").toggleClass("hide show");
+        });
+        $(".userBtn").on("click", function() {
+            /* body... */
+            getUserInfo(this.id);
+            $(".editUserBtn").show();
+            $(".controlDiv").addClass("hide");
+            $(".userInfo").toggleClass("hide show");
+        });
+        $(".editUserBtn").on("click", function() {
+            /* body... */
+            $(this).hide();
+            $("#editUserFormContainer").show();
+        });
+    }
+
+    function getUserInfo(t) {
+        // body...
+        var thisId = t.slice(2);
+        for (var i = 0; i < usersArr.length; i++) {
+            if (thisId == usersArr[i].id) {
+                displayUserInfo(usersArr[i]);
+            }
+        }
+    }
+
+    function displayUserInfo(user) {
+        // body...
+        // console.log(student);
+        var img = document.querySelector("#userImg"),
+            fullName = document.querySelector("#user"),
+            email = document.querySelector("#userMail"),
+            cellphone = document.querySelector("#userCellphone"),
+            userId = document.querySelector("#userId");
+
+        img.setAttribute("src", user.image);
+        userId.setAttribute("value", user.id);
+        fullName.textContent = user['name'];
+        email.textContent = user.mail;
+        cellphone.textContent = user.phone;
+
+        adminAddEvents();
+        setUsersEdit(user);
+    }
+
+
+    function setUsersEdit(user) {
+        // body...  
+
+        var userName = document.querySelector("#newUserName"),
+            userEmail = document.querySelector("#newUserEmail"),
+            userPassword = document.querySelector("#newPassword"),
+            userPhone = document.querySelector("#newUserPhone"),
+            userRole = document.querySelector("#roleEdit"),
+            userImg = document.querySelector("#newUserImageToUpload");
+
+        userName.setAttribute("value", user.name);
+        userEmail.value = user.mail;
+        userPhone.value = user.phone;
+        userImg.value = '';
+
+        userId = user.id;
+
+        for (var i = 0; i < roleArr.length; i++) {
+            if (user.role == i) {
+                userRole[i].selected = "selected";
+            }
+        }
+    }
 }
 
 
@@ -142,21 +262,6 @@ if (mode == 'school') {
                     displayCourseStudents(courseArr[i][4]);
                 }
             }
-        }
-    }
-
-    // image upload preview 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('.toUpload')
-                    .attr('src', e.target.result)
-                    .addClass("formImage");
-            };
-
-            reader.readAsDataURL(input.files[0]);
         }
     }
 
@@ -608,3 +713,17 @@ if (mode == 'school') {
 }
 
 //COURSE VALIDATIONS
+    // image upload preview 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.toUpload')
+                .attr('src', e.target.result)
+                .addClass("formImage");
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
