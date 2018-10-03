@@ -47,7 +47,8 @@ if (mode == 'admin') {
     function adminAddEvents() {
 
         $("#editUserFormContainer").hide();
-
+        $(".userAlerts").hide();
+        $(".validAlerts").hide();
         $("#addUserBtn").on("click", function () {
             /* body... */
             $(".controlDiv").addClass("hide");
@@ -64,6 +65,13 @@ if (mode == 'admin') {
             /* body... */
             $(this).hide();
             $("#editUserFormContainer").show();
+        });
+        $(".deleteUserBtn").unbind('click').on("click", function() {
+            /* body... */
+            userId = document.querySelector("#userEditId");
+            userId = userId.value;
+            console.log(userId);
+            deleteUser(userId);
         });
     }
 
@@ -84,7 +92,7 @@ if (mode == 'admin') {
             fullName = document.querySelector("#user"),
             email = document.querySelector("#userMail"),
             cellphone = document.querySelector("#userCellphone"),
-            userId = document.querySelector("#userId");
+            userId = document.querySelector("#userEditId");
 
         img.setAttribute("src", user.image);
         userId.setAttribute("value", user.id);
@@ -120,6 +128,128 @@ if (mode == 'admin') {
             }
         }
     }
+
+    //DELETE STUDENT
+    function deleteUser(u) {
+        $('#confirmDeleteUser').on('click', function() {
+            /* body... */
+            console.log('clicked');
+            deleteUserFromArray(u);
+            deleteUserFromDB(u);
+            $("#deleteUserSucsses").show();
+            dismissAlert('user');
+
+        });
+
+
+    }
+
+    function deleteUserFromArray(u) {
+
+        for (var i = 0; i < usersArr.length; i++) {
+            if (usersArr[i].id == u) {
+                usersArr.splice(i, 1);
+                $('.userBtn').remove();
+                adminInit();
+            }
+        }
+
+
+    }
+
+    function deleteUserFromDB(u) {
+        info = {
+            userId: u,
+        }
+
+        $.ajax({
+            type: 'POST',
+            datatype: 'json',
+            data: info,
+            url: "http://localhost/john_bryce/smsV1/includes/handlers/deleteUserHandler.php",
+            success: function(data) {
+                console.log("db response:", data);
+            },
+            error: function(error) {
+                console.log("error : ", error);
+            }
+
+        });
+    }
+
+
+    //USER VALIDATIONS
+    var error;
+
+    function displayError(error) {
+        /* body... */
+        $(".validAlerts").text(error);
+        $(".validAlerts").show();
+        console.log(error);
+    }
+
+
+    function userValid(form) {
+        $(".validAlerts").hide();    
+        console.log(form);
+        var error;
+        res = regexValid(form.userName, form.userEmail, form.password,form.userPhone);
+
+        return res;
+    }
+
+    function userEditValid(form) {
+        res = regexValid(form.newUserName, form.newUserEmail, form.newPassword,form.newUserPhone);
+        return res;
+    }
+
+    function regexValid(name, mail, pass, phone) {
+
+        //username
+        var patt = /^[a-z\u0590-\u05fe\p{L}\s'.-]+$/i;
+        var nameToCheck = name.value,
+            res = patt.test(nameToCheck);
+        if (!res) {
+            error = "name is not valid";
+            displayError(error);
+            return false;
+        }
+
+        //email
+        var patt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var mailToCheck = mail.value,
+            res = patt.test(mailToCheck);
+        if (!res) {
+            error = "email is not valid";
+            displayError(error);
+            return false;
+        }
+
+        //password 
+        if (pass.value.length < 6 && pass.value.length > 0) {
+            error = "password shorter then 6 notes";
+            displayError(error);
+            return false;
+        }
+
+        //phone
+        var pattLocal = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        var patteInter = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        var phoneToCheck = phone.value,
+            res1 = pattLocal.test(phoneToCheck),
+            res2 = patteInter.test(phoneToCheck);
+        if (!res1) {
+            if (!res2) {
+                error = "phone is not valid";
+                displayError(error);
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
 }
 
 
@@ -187,6 +317,7 @@ if (mode == 'school') {
         $(".controlDiv").addClass("hide");
         $("#editFormContainer").hide();
         $("#editCourseContainer").hide();
+        $(".validAlerts").hide();
 
         $("#addStudentBtn").on("click", function() {
             /* body... */
@@ -617,24 +748,6 @@ if (mode == 'school') {
 
 
     }
-    //UTILITIES
-    function dismissAlert(type) {
-        // body...
-        if (type == 'course') {
-            setTimeout(function() {
-                /* body... */
-                $(".courseAlerts").hide();
-            }, 3000);
-        }
-
-        if (type == 'student') {
-
-            setTimeout(function() {
-                /* body... */
-                $(".studentAlerts").hide();
-            }, 3000);
-        }
-    }
 
     //---------//
     //VALIDATIONS
@@ -644,12 +757,15 @@ if (mode == 'school') {
 
     function displayError(error) {
         /* body... */
+        $(".validAlerts").text(error);
+        $(".validAlerts").show();
         console.log(error);
     }
 
     //STUDENT VALIDATIONS
 
     function studentValid(form) {
+        $(".validAlerts").hide();
         console.log(form);
         var error;
         res = regexValid(form.studentName, form.email, form.phone);
@@ -725,5 +841,31 @@ function readURL(input) {
         };
 
         reader.readAsDataURL(input.files[0]);
+    }
+}
+
+//UTILITIES
+function dismissAlert(type) {
+    // body...
+    if (type == 'course') {
+        setTimeout(function() {
+            /* body... */
+            $(".courseAlerts").hide();
+        }, 3000);
+    }
+
+    if (type == 'student') {
+
+        setTimeout(function() {
+            /* body... */
+            $(".studentAlerts").hide();
+        }, 3000);
+    }
+    if (type == 'user') {
+
+        setTimeout(function() {
+            /* body... */
+            $(".userAlerts").hide();
+        }, 3000);
     }
 }

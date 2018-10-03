@@ -120,6 +120,9 @@ console.log(courseArr);
 						<div class="form-group">
 							<?php include 'includes/coursesCheckbox.php'; ?>
 						</div>
+						<div class="alert alert-warning validAlerts" id="unvalidStudentInput" role="alert">
+							
+						</div>
 						<button type="submit" class="btn btn-primary submitBtn" id="addStdntBtn" name="submit" value="addStudent">הוסף</button>
 					</form>
 				</div>
@@ -211,6 +214,9 @@ console.log(courseArr);
 											</div>
 											<div class="col-4">
 												<input type="hidden" id="studentId" name="studentId">
+												<div class="alert alert-warning validAlerts" id="unvalidStudentInput" role="alert">
+													
+												</div>
 												<button type="submit"  class="btn btn-primary submitBtn" name="submit" value="updateStudent">עדכן</button>
 
 											</div>

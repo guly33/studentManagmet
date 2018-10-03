@@ -14,14 +14,32 @@ console.log(usersArr);
 			<div class="adminNavContainer NavContainer">
 				<nav class="nav flex-column adminNav" id="users">
 					<button class="btn addBtn" id="addUserBtn"><i class="fas fa-plus"></i>הוסף תפקיד</button>
+					<div class="alert alert-success userAlerts" id="deleteUserSucsses" role="alert">
+						הוסר בהצלחה!
+					</div>
 				</nav>
 			</div>
 		</div>
 		<div class="col-9">
+			<div class="modal deleteModals " tabindex="-1" role="dialog" id="deleteUserConfirm">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">הסר משתמש</h5>
+						</div>
+						<div class="modal-body">
+							<p>האם להסיר משתמש?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger modalBtn" id="confirmDeleteUser" data-dismiss="modal">הסר</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">בטל</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="controlDivContainer">
 				<div class="addUser controlDiv" >
-					<form action="includes/handlers/addUserHandler.php" method="post" enctype="multipart/form-data">
-						<!-- onsubmit="return userValid(this)" -->
+					<form action="includes/handlers/addUserHandler.php" method="post" enctype="multipart/form-data" onsubmit="return userValid(this)">
 						<div class="form-group imageUpload">
 							<label for="userImageToUpload">תמונת פרופיל:</label>
 							<div class="fileinputs">
@@ -34,7 +52,7 @@ console.log(usersArr);
 						</div>
 						<div class="form-group">
 							<label for="userName">שם מלא:</label>
-							<input type="text" class="form-control" id="userName" name="userName" placeholder="הכנס שם תלמיד." required>
+							<input type="text" class="form-control" id="userName" name="userName" placeholder="הכנס שם מלא." required>
 						</div>
 						<div class="form-group">
 							<label for="userEmail">אימייל:</label>
@@ -43,7 +61,7 @@ console.log(usersArr);
 						</div>
 						<div class="form-group">
 							<label for="password">סיסמא:</label>
-							<input type="password" class="form-control" id="password" name="password" required>
+							<input type="password" class="form-control" id="password" name="password" placeholder="לפחות שישה תווים" required>
 						</div>
 						<div class="form-group">
 							<label for="userPhone">טלפון:</label>
@@ -51,6 +69,9 @@ console.log(usersArr);
 						</div>
 						<select name="role" class="roleSelect">
 						</select>
+						<div class="alert alert-warning validAlerts" id="unvalidInput" role="alert">
+						
+						</div>	
 						<button type="submit" class="btn btn-primary submitBtn" id="submitUserBtn" name="submit" value="addUser">הוסף</button>
 					</form>
 				</div>
@@ -72,8 +93,7 @@ console.log(usersArr);
 							<div class="editUser">
 								<button class="btn btn-primary editUserBtn">edit</button>
 								<div id="editUserFormContainer">
-									<form method="post" action="includes/handlers/editUser.php" enctype="multipart/form-data">
-										<!-- onsubmit="return userEditValid(this)" -->
+									<form method="post" action="includes/handlers/editUser.php" enctype="multipart/form-data" onsubmit="return userEditValid(this)">
 										<div class="row">
 											<div class="col-6">
 												<div class="form-group">
@@ -88,7 +108,7 @@ console.log(usersArr);
 												</div>
 												<div class="form-group">
 													<label for="newPassword">שנה סיסמא:</label>
-													<input type="password" class="form-control" id="newPassword" name="newPassword" required>
+													<input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="לפחות שישה תווים">
 												</div>
 												<div class="form-group">
 													<label for="newUserPhone">שנה טלפון:</label>
@@ -110,7 +130,10 @@ console.log(usersArr);
 												</select>
 											</div>
 										</div>
-										<input type="hidden" id="userId" name="userId">
+										<input type="hidden" id="userEditId" name="userEditId">
+										<div class="alert alert-warning validAlerts" role="alert">
+							
+										</div>
 										<button type="submit"  class="btn btn-primary submitBtn" name="submit" value="updateUser">עדכן</button>
 									</form>
 									<button class="btn btn-danger deleteUserBtn deleteBtn" data-toggle="modal" data-target="#deleteUserConfirm">מחק</button>
@@ -119,6 +142,7 @@ console.log(usersArr);
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>

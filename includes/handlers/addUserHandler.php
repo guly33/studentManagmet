@@ -10,6 +10,14 @@
 		$password = md5($password);
 		$role = $_POST['role'];
 		$phone = $_POST['userPhone'];
+
+		$query = mysqli_query($con, "SELECT * FROM users WHERE `mail`='$email'");
+		if (mysqli_num_rows($query) > 0) {
+			# code...
+			echo "emailExist";
+			header("Location: ../../index.php?main=admin&error=emailExist");
+			exit();		
+		}
 		if (!(empty($_FILES['userImageToUpload']["tmp_name"]))) {
 			# code...
 			$imgPath = uploadImg($_FILES["userImageToUpload"], $_POST['submit']);
