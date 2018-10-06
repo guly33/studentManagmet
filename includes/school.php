@@ -16,7 +16,7 @@ console.log(courseArr);
 						</div>
 						<div class="coursesNavContainer NavContainer">
 							<nav class="nav flex-column coursesNav" id="courses">
-								<button class="btn addBtn" id="addCourseBtn"><i class="fas fa-plus"></i>הוסף קורס</button>
+								<button class="btn addBtn manager" id="addCourseBtn"><i class="fas fa-plus"></i>הוסף קורס</button>
 								<div class="alert alert-success courseAlerts" id="removeCourseSucsses" role="alert">
 									נמחק בהצלחה!
 								</div>
@@ -222,7 +222,7 @@ console.log(courseArr);
 											</div>
 										</div>
 									</form>
-									<button class="btn btn-danger deleteStudentBtn deleteBtn" data-toggle="modal" data-target="#deleteStudentConfirm">מחק</button>
+									<button class="btn btn-danger deleteStudentBtn deleteBtn manager" data-toggle="modal" data-target="#deleteStudentConfirm">מחק</button>
 								</div>
 							</div>
 						</div>
@@ -247,7 +247,7 @@ console.log(courseArr);
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<div class="editCourse">
+							<div class="editCourse manager">
 								<button class="btn btn-primary editCourseBtn">edit</button>
 								<div id="editCourseContainer">
 									<form method="post" action="includes/handlers/editCourse.php" enctype="multipart/form-data">

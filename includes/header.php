@@ -16,6 +16,7 @@
 	$rolesArr = array("owner", "manager", "salesman");
 	$roleJson = json_encode($rolesArr);
 	$userName = "";
+	$userRoleName = "";
 	$userRole = "";
 	$userImg = "assets/images/avatars/admin-avatar.png";
 	if (isset($_SESSION['userLoggedIn'])) {
@@ -26,7 +27,9 @@
 		if (!empty($row)) {
 			# code...
 			$userName = $row['name'];
-			$userRole = $rolesArr[$row['role']];
+			$loggedUserId = $row['id'];
+			$userRoleName = $rolesArr[$row['role']];
+			$userRole = json_encode($row['role']);
 			$userImg = $row['image'];
 		}
 	}
@@ -45,6 +48,12 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 		<title>TheSchool-SMS</title>
+		<script>
+			var role = <?php echo $userRole; ?>;
+			var loggedId = <?php echo $loggedUserId; ?>;
+			// var userName = <?php echo $userRoleName; ?>;
+			console.log(role);
+		</script>
 	</head>
 	<body>
 		<!-- header -->
@@ -59,7 +68,7 @@
 							</li>
 							<li class="nav-item textInfo">
 								<span id="userRole">
-									<?php echo $userRole." - ".$userName;?>
+									<?php echo $userRoleName." - ".$userName;?>
 								</span>
 							</li>
 							<li>

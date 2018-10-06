@@ -140,6 +140,10 @@ body{
 .userBtn {
 	width: 80%;
 }
+
+#users:nth-child(1) {
+	margin-top: 10px;
+}
 .userName {
 	float: right;
 }

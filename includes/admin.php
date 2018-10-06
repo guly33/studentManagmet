@@ -13,7 +13,7 @@ console.log(usersArr);
 			</div>
 			<div class="adminNavContainer NavContainer">
 				<nav class="nav flex-column adminNav" id="users">
-					<button class="btn addBtn" id="addUserBtn"><i class="fas fa-plus"></i>הוסף תפקיד</button>
+					<button class="btn addBtn owner" id="addUserBtn"><i class="fas fa-plus"></i>הוסף תפקיד</button>
 					<div class="alert alert-success userAlerts" id="deleteUserSucsses" role="alert">
 						הוסר בהצלחה!
 					</div>
@@ -90,7 +90,7 @@ console.log(usersArr);
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<div class="editUser">
+							<div class="editUser manager">
 								<button class="btn btn-primary editUserBtn">edit</button>
 								<div id="editUserFormContainer">
 									<form method="post" action="includes/handlers/editUser.php" enctype="multipart/form-data" onsubmit="return userEditValid(this)">

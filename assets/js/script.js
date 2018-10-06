@@ -1,4 +1,19 @@
+console.log(role);
+console.log(loggedId);
+displayByRole(role);
+function displayByRole(role) {
+    // body...
+        if (role == 2) {
+            $(".owner").hide();
+            $(".manager").hide();
+        }
+        if (role == 1) {
+            $(".owner").hide();
+        }
+
+}
 if (mode == 'admin') {
+
     var roleSelect = document.getElementsByClassName("roleSelect"),
         adminNav = document.querySelector("#users"),
         addUserBtn = document.querySelector("#addUserBtn");
@@ -107,7 +122,10 @@ if (mode == 'admin') {
 
     function setUsersEdit(user) {
         // body...  
-
+        if (role == "2") {
+            $(".owner").hide();
+            $(".manager").hide();
+        }
         var userName = document.querySelector("#newUserName"),
             userEmail = document.querySelector("#newUserEmail"),
             userPassword = document.querySelector("#newPassword"),
@@ -121,12 +139,20 @@ if (mode == 'admin') {
         userImg.value = '';
 
         userId = user.id;
-
+        if (user.id != loggedId) {            
+            if (role == "1" && user.role == "1") {
+                $(".editUser").hide();
+            }
+        }
+        if (user.id == loggedId && role == "2") {
+            $(".editUser").show();
+        }
         for (var i = 0; i < roleArr.length; i++) {
             if (user.role == i) {
                 userRole[i].selected = "selected";
             }
         }
+
     }
 
     //DELETE STUDENT
