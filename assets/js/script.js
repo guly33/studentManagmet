@@ -803,6 +803,8 @@ if (mode == 'school') {
             var toCheck = $('div.checkCourseContainer.required :checkbox:checked');
 
             if (toCheck.length <= 0) {
+                error = "No courses Checked!";
+                displayError(error)
                 console.log(toCheck.length);
                 return false;
             }
