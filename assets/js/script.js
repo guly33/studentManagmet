@@ -74,12 +74,14 @@ if (mode == 'admin') {
             getUserInfo(this.id);
             $(".editUserBtn").show();
             $(".controlDiv").addClass("hide");
+            // $(".userInfo").addClass(".stretchLeft");
+            // $(".userInfo").addClass("one");
             $(".userInfo").toggleClass("hide show");
         });
         $(".editUserBtn").on("click", function() {
             /* body... */
             $(this).hide();
-            $("#editUserFormContainer").show();
+            $("#editUserFormContainer").show("slow");
         });
         $(".deleteUserBtn").unbind('click').on("click", function() {
             /* body... */
@@ -162,7 +164,7 @@ if (mode == 'admin') {
             console.log('clicked');
             deleteUserFromArray(u);
             deleteUserFromDB(u);
-            $("#deleteUserSucsses").show();
+            $("#deleteUserSucsses").show("slow");
             dismissAlert('user');
 
         });
@@ -210,7 +212,7 @@ if (mode == 'admin') {
     function displayError(error) {
         /* body... */
         $(".validAlerts").text(error);
-        $(".validAlerts").show();
+        $(".validAlerts").show("slow");
         console.log(error);
     }
 
@@ -392,12 +394,12 @@ if (mode == 'school') {
         $(".editBtn").on("click", function() {
             /* body... */
             $(this).hide();
-            $("#editFormContainer").show();
+            $("#editFormContainer").show("slow");
         });
         $(".editCourseBtn").on("click", function() {
             /* body... */
             $(this).hide();
-            $("#editCourseContainer").show();
+            $("#editCourseContainer").show("slow");
         });
 
     }
@@ -595,7 +597,7 @@ if (mode == 'school') {
             console.log('clicked');
             deleteStudentFromArray(s);
             deleteStudentFromDB(s);
-            $("#deleteStudentSucsses").show();
+            $("#deleteStudentSucsses").show("slow");
             dismissAlert('student');
 
         });
@@ -653,7 +655,7 @@ if (mode == 'school') {
 
             removeStudentFromArr(info);
             removeStudentFromDB(info);
-            $("#removeStudentSucsses").show();
+            $("#removeStudentSucsses").show("slow");
             dismissAlert('student');
 
         });
@@ -784,7 +786,7 @@ if (mode == 'school') {
     function displayError(error) {
         /* body... */
         $(".validAlerts").text(error);
-        $(".validAlerts").show();
+        $(".validAlerts").show("slow");
         console.log(error);
     }
 
@@ -876,7 +878,7 @@ function dismissAlert(type) {
     if (type == 'course') {
         setTimeout(function() {
             /* body... */
-            $(".courseAlerts").hide();
+            $(".courseAlerts").hide("slow");
         }, 3000);
     }
 
@@ -884,14 +886,14 @@ function dismissAlert(type) {
 
         setTimeout(function() {
             /* body... */
-            $(".studentAlerts").hide();
+            $(".studentAlerts").hide("slow");
         }, 3000);
     }
     if (type == 'user') {
 
         setTimeout(function() {
             /* body... */
-            $(".userAlerts").hide();
+            $(".userAlerts").hide("slow");
         }, 3000);
     }
 }

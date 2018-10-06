@@ -8,7 +8,7 @@ console.log(courseArr);
 <div class="schoolContainer">
 	<div class="row schoolRow">
 		<div class="col-4">
-			<div class="schoolNavs">
+			<div class="schoolNavs stretchLeft">
 				<div class="row">
 					<div class="col-6">
 						<div class="schoolNavHead navHead">
@@ -152,7 +152,7 @@ console.log(courseArr);
 						</div>
 					</form>
 				</div>
-				<div class="controlDiv studentInfo">
+				<div class="controlDiv studentInfo stretchLeft">
 					<div class="row">
 						<div class="col-4">
 							<img id="studentImg" src="#">
@@ -228,7 +228,7 @@ console.log(courseArr);
 						</div>
 					</div>
 				</div>
-				<div class="controlDiv courseInfo">
+				<div class="controlDiv courseInfo slideUp">
 					<div class="row">
 						<div class="col-4">
 							<img id="courseImg" src="#">
@@ -236,7 +236,7 @@ console.log(courseArr);
 						<div class="col-8">
 							<h4 id="course"></h4>
 							<div class="basicInfo">
-								<p><h5>תיאור:</h5> <span id="courseDesc"></span></p>
+								<p><span id="courseDesc"></span></p>
 							</div>
 							<div class="studentListContainer">
 								<ul class="studentsList">

@@ -7,7 +7,7 @@ console.log(usersArr);
 </script>
 <div class="adminContainer">
 	<div class="row adminRow">
-		<div class="col-3">
+		<div class="col-3 stretchLeft">
 			<div class="adminNavHead navHead">
 				<h4>בעלי תפקיד:</h4>
 			</div>
@@ -75,7 +75,7 @@ console.log(usersArr);
 						<button type="submit" class="btn btn-primary submitBtn" id="submitUserBtn" name="submit" value="addUser">הוסף</button>
 					</form>
 				</div>
-				<div class="controlDiv userInfo">
+				<div class="controlDiv userInfo stretchLeft">
 					<div class="row">
 						<div class="col-4">
 							<img id="userImg" src="#">

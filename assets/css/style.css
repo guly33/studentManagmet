@@ -239,7 +239,6 @@ body{
 	background-color: #fbfbff;
 }
 
-
 .coursesNav .courseBtn.active {
 	color: #3788cc;
     background-color: #fbfbff;
@@ -331,6 +330,7 @@ h4#student {
 	color: #150578;
 }
 
+
 .basicInfo h5 {
 	font-size: 1.75em;
 }
@@ -399,6 +399,9 @@ textarea.styled {
 	width: 65%;
 	float: right;
 	padding-right: 17px;
+	max-height: 200px;
+	overflow-y: scroll;
+
 }
 
 .courseLearned {
@@ -457,3 +460,4 @@ footer .contactInfo {
 	padding-right: 10px;
 }
 
+/* ANIMATION */
