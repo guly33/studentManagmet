@@ -6,6 +6,9 @@ courseArr = <?php echo $myJSON; ?>;
 console.log(courseArr);
 </script>
 <div class="schoolContainer">
+	<div class="alert alert-success queryAlert" id="querySucsses" role="alert">
+		פעולה הושלמה בהצלחה
+	</div>
 	<div class="row schoolRow">
 		<div class="col-4">
 			<div class="schoolNavs stretchLeft">
@@ -19,6 +22,9 @@ console.log(courseArr);
 								<button class="btn addBtn manager" id="addCourseBtn"><i class="fas fa-plus"></i>הוסף קורס</button>
 								<div class="alert alert-success courseAlerts" id="removeCourseSucsses" role="alert">
 									נמחק בהצלחה!
+								</div>
+								<div class="alert alert-success courseAlerts" id="addCourseSucsses" role="alert">
+									נוסף בהצלחה!
 								</div>
 								<div class="modal deleteModals " tabindex="-1" role="dialog" id="removeStudentConfirm">
 									<div class="modal-dialog" role="document">
@@ -92,7 +98,7 @@ console.log(courseArr);
 		</div>
 		<div class="col-8">
 			<div class="controlDivContainer">
-				<div class="addStudent controlDiv" >
+				<div class="addStudent controlDiv slideExpandUp" >
 					<form action="includes/handlers/addStudentHandler.php" method="post" enctype="multipart/form-data" onsubmit="return studentValid(this)">
 						<div class="form-group imageUpload">
 							<label for="imageToUpload">תמונת פרופיל:</label>
@@ -126,7 +132,7 @@ console.log(courseArr);
 						<button type="submit" class="btn btn-primary submitBtn" id="addStdntBtn" name="submit" value="addStudent">הוסף</button>
 					</form>
 				</div>
-				<div class="addCourse controlDiv">
+				<div class="addCourse controlDiv slideExpandUp">
 					<form action="includes/handlers/addCourseHandler.php" method="post"  enctype="multipart/form-data">
 						<div class="form-group imageUpload">
 							<label for="imageToUpload">תמונת פרופיל:</label>

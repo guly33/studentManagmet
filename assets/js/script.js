@@ -1,5 +1,6 @@
 console.log(role);
 console.log(loggedId);
+
 displayByRole(role);
 function displayByRole(role) {
     // body...
@@ -33,6 +34,7 @@ if (mode == 'admin') {
     function adminInit() {
         for (var i = 0; i < usersArr.length; i++) {
             $(".controlDiv").addClass("hide");
+            if (role == '1') {}
             
             var button = document.createElement("button");
             var role = document.createElement("span");
@@ -57,6 +59,12 @@ if (mode == 'admin') {
 
         }
         adminAddEvents()
+        if (status == 1) {
+            $(".queryAlert").show();
+            dismissAlert('query');
+            status = 2;
+        }
+
     }
 
     function adminAddEvents() {
@@ -64,6 +72,9 @@ if (mode == 'admin') {
         $("#editUserFormContainer").hide();
         $(".userAlerts").hide();
         $(".validAlerts").hide();
+        $(".queryAlert").hide();
+
+
         $("#addUserBtn").on("click", function () {
             /* body... */
             $(".controlDiv").addClass("hide");
@@ -124,9 +135,14 @@ if (mode == 'admin') {
 
     function setUsersEdit(user) {
         // body...  
+        $(".editUser").show();
+
         if (role == "2") {
             $(".owner").hide();
             $(".manager").hide();
+        }
+        if (role == "1") {
+            $(".owner").hide();
         }
         var userName = document.querySelector("#newUserName"),
             userEmail = document.querySelector("#newUserEmail"),
@@ -142,7 +158,7 @@ if (mode == 'admin') {
 
         userId = user.id;
         if (user.id != loggedId) {            
-            if (role == "1" && user.role == "1") {
+            if ((role == "1" && user.role == "1") || role == "1" && user.role == "0") {
                 $(".editUser").hide();
             }
         }
@@ -337,6 +353,13 @@ if (mode == 'school') {
         $(".courseInfo").toggleClass("hide show");
         $(".courseAlerts").hide();
         $(".studentAlerts").hide();
+
+        if (status == 1) {
+            $(".queryAlert").show();
+            dismissAlert('query');
+            status = 2;
+        }
+
     }
 
     function addEvents() {
@@ -346,6 +369,8 @@ if (mode == 'school') {
         $("#editFormContainer").hide();
         $("#editCourseContainer").hide();
         $(".validAlerts").hide();
+        $(".queryAlert").hide();
+
 
         $("#addStudentBtn").on("click", function() {
             /* body... */
@@ -898,4 +923,12 @@ function dismissAlert(type) {
             $(".userAlerts").hide("slow");
         }, 3000);
     }
+
+    if (type == 'query') {
+
+        setTimeout(function() {
+            $(".queryAlert").hide("slow");
+        }, 3000);
+    }
+    
 }

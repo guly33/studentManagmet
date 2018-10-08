@@ -16,16 +16,16 @@
 			if (!empty( $_FILES['newUserImageToUpload']["tmp_name"])) {
 				# code...
 				$imgPath = uploadImg($_FILES["newUserImageToUpload"], $_POST['submit']);
-				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'");
+				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				if (mysqli_num_rows($query) > 0) {
 					# code...
-					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `password` = '$password', `role`='$role',`image` = '$imgPath' WHERE id = '$userId'");
+					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `password` = '$password', `role`='$role',`image` = '$imgPath' WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				}
 			} else {
-				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'");
+				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				if (mysqli_num_rows($query) > 0) {
 					# code...
-					$newQuery = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `password` = '$password', `role`='$role' WHERE id = '$userId'");
+					$newQuery = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `password` = '$password', `role`='$role' WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				}
 			}
 		} else {
@@ -33,22 +33,21 @@
 				# code...
 				echo "string";
 				$imgPath = uploadImg($_FILES["newUserImageToUpload"], $_POST['submit']);
-				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'");
+				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				if (mysqli_num_rows($query) > 0) {
 					# code...
-					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `role`='$role',`image` = '$imgPath' WHERE id = '$userId'");
+					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `role`='$role',`image` = '$imgPath' WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				}
 			} else {
-				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'");
+				$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				if (mysqli_num_rows($query) > 0) {
 					# code...
-					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `role`='$role' WHERE id = '$userId'");
+					$query = mysqli_query($con, "UPDATE `users` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `role`='$role' WHERE id = '$userId'") or die("Unable to Connect, sorry :D");
 				}
 			}
 		}
 
 
-		header("Location: ../../index.php?main=admin");
-		// header("Location: ../../".$_SESSION['page']);
+		header("Location: ../../index.php?main=admin&status=1");
 	}
  ?>

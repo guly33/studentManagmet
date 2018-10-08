@@ -5,6 +5,7 @@
 		# code...
 			header("Location: login.php");
 	}
+	$status = 2;
 
 	if (isset($_POST['logout'])) {
 		# code...
@@ -12,6 +13,10 @@
 		unset($_SESSION);
 		session_destroy();
 		header("Location: ../login.php");
+	}
+	if (isset($_GET['status']) && !empty($_GET['status'])) {
+		# code...
+		 $status = $_GET['status'];
 	}
 	$rolesArr = array("owner", "manager", "salesman");
 	$roleJson = json_encode($rolesArr);
@@ -33,6 +38,7 @@
 			$userImg = $row['image'];
 		}
 	}
+
 ?>
 <!doctype html>
 <html lang="he" dir="rtl">
@@ -52,8 +58,8 @@
 		<script>
 			var role = <?php echo $userRole; ?>;
 			var loggedId = <?php echo $loggedUserId; ?>;
-			// var userName = <?php echo $userRoleName; ?>;
-			console.log(role);
+			var status = <?php echo $status; ?>;
+			console.log(status);
 		</script>
 	</head>
 	<body>

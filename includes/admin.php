@@ -6,6 +6,9 @@ roleArr = <?php echo $roleJson; ?>;
 console.log(usersArr);
 </script>
 <div class="adminContainer">
+	<div class="alert alert-success queryAlert" id="queryAdminSucsses" role="alert">
+		פעולה הושלמה בהצלחה
+	</div>
 	<div class="row adminRow">
 		<div class="col-3 stretchLeft">
 			<div class="adminNavHead navHead">
@@ -38,7 +41,7 @@ console.log(usersArr);
 				</div>
 			</div>
 			<div class="controlDivContainer">
-				<div class="addUser controlDiv" >
+				<div class="addUser controlDiv slideExpandUp" >
 					<form action="includes/handlers/addUserHandler.php" method="post" enctype="multipart/form-data" onsubmit="return userValid(this)">
 						<div class="form-group imageUpload">
 							<label for="userImageToUpload">תמונת פרופיל:</label>

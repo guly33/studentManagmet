@@ -13,16 +13,16 @@
 			# code...
 			echo "string";
 			$imgPath = uploadImg($_FILES["newImageToUpload"], $_POST['submit']);
-			$query = mysqli_query($con, "SELECT * FROM students WHERE id = '$studentId'");
+			$query = mysqli_query($con, "SELECT * FROM students WHERE id = '$studentId'") or die("Unable to Connect, sorry :D");
 			if (mysqli_num_rows($query) > 0) {
 				# code...
-				$query = mysqli_query($con, "UPDATE `students` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `image` = '$imgPath' WHERE id = '$studentId'");
+				$query = mysqli_query($con, "UPDATE `students` SET `name`= '$name', `mail` = '$email', `phone` = '$phone', `image` = '$imgPath' WHERE id = '$studentId'") or die("Unable to Connect, sorry :D");
 			}
 		} else {
-			$query = mysqli_query($con, "SELECT * FROM students WHERE id = '$studentId'");
+			$query = mysqli_query($con, "SELECT * FROM students WHERE id = '$studentId'") or die("Unable to Connect, sorry :D");
 			if (mysqli_num_rows($query) > 0) {
 				# code...
-				$query = mysqli_query($con, "UPDATE `students` SET `name`= '$name', `mail` = '$email', `phone` = '$phone' WHERE id = '$studentId'");
+				$query = mysqli_query($con, "UPDATE `students` SET `name`= '$name', `mail` = '$email', `phone` = '$phone' WHERE id = '$studentId'") or die("Unable to Connect, sorry :D");
 			}
 		}
 
@@ -39,7 +39,6 @@
 			}
 		}
 
-		header("Location: ../../index.php?main=school");
-		// header("Location: ../../".$_SESSION['page']);
+		header("Location: ../../index.php?main=school&status=1");
 	}
  ?>

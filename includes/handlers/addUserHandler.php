@@ -11,7 +11,7 @@
 		$role = $_POST['role'];
 		$phone = $_POST['userPhone'];
 
-		$query = mysqli_query($con, "SELECT * FROM users WHERE `mail`='$email'");
+		$query = mysqli_query($con, "SELECT * FROM users WHERE `mail`='$email'") or die("Unable to Connect, sorry :D");
 		if (mysqli_num_rows($query) > 0) {
 			# code...
 			echo "emailExist";
@@ -26,12 +26,12 @@
 		}
 
 		//INSERT STUDENT TO DB
-		$query = mysqli_query($con, "SELECT * FROM users WHERE name = '$name'");
+		$query = mysqli_query($con, "SELECT * FROM users WHERE name = '$name'") or die("Unable to Connect, sorry :D");
 		if (mysqli_num_rows($query) < 1) {
 			# code...
-			$query = mysqli_query($con, "INSERT INTO `users`(`name`, `mail`, `phone`,`password`, `role`, `image`) VALUES ('$name','$email','$phone','$password','$role','$imgPath')");
+			$query = mysqli_query($con, "INSERT INTO `users`(`name`, `mail`, `phone`,`password`, `role`, `image`) VALUES ('$name','$email','$phone','$password','$role','$imgPath')") or die("Unable to Connect, sorry :D");
 
 		}
-		header("Location: ../../index.php?main=admin");		
+		header("Location: ../../index.php?main=admin&status=1");		
 	}
  ?>
