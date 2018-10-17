@@ -16,7 +16,7 @@ console.log(usersArr);
 			</div>
 			<div class="adminNavContainer NavContainer">
 				<nav class="nav flex-column adminNav" id="users">
-					<button class="btn addBtn owner" id="addUserBtn"><i class="fas fa-plus"></i>הוסף תפקיד</button>
+					<button class="btn addBtn manager" id="addUserBtn"><i class="fas fa-plus"></i>הוסף תפקיד</button>
 					<div class="alert alert-success userAlerts" id="deleteUserSucsses" role="alert">
 						הוסר בהצלחה!
 					</div>

@@ -92,7 +92,7 @@
 							<li class="nav-item">
 								<a class="nav-link btn" href="?main=school">School</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item manager">
 								<a class="nav-link btn" href="?main=admin">Admin</a>
 							</li>
 						</ul>

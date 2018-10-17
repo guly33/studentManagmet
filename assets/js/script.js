@@ -24,8 +24,17 @@ if (mode == 'admin') {
         for (var i = 0; i < roleArr.length; i++) {
             var option = document.createElement("option");
             option.setAttribute("value", i);
+            if (role == 1 && option.value == 2) {
+                option.setAttribute("selected", "selected");
+            }
             option.textContent = roleArr[i];
             roleSelect[k].add(option);
+            if (role == 1 && i != 2) {
+                if (option.value != 2) {
+                    $(option).hide();
+                    console.log(option);
+                }
+            }
         }
 
     }
